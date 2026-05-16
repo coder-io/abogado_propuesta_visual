@@ -62,6 +62,12 @@
       display: none; background: none; border: none; cursor: pointer;
       color: var(--v3-ink); padding: 4px;
     }
+    .lang-mob {
+      display: none; align-items: center; gap: 4px;
+      background: var(--v2-gold); border-radius: 20px;
+      padding: 6px 12px; cursor: pointer; color: var(--v2-navy);
+    }
+    .lang-mob span { font-size: 11px; font-weight: 800; }
 
     /* ── MOBILE NAV ── */
     .mob-nav {
@@ -332,6 +338,7 @@
       .hdr { padding: 0 20px; height: 60px; }
       .hdr-nav, .hdr-right { display: none; }
       .menu-btn { display: flex; }
+      .lang-mob { display: flex; }
       .hdr-name { font-size: 10px; letter-spacing: 1.2px; }
       .hdr-bar { height: 20px; }
       .mob-nav { top: 60px; }
@@ -380,10 +387,7 @@
       .stat-lnk { font-size: 12px; font-weight: 600; color: var(--v2-gold); text-decoration: none; }
 
       /* Services */
-      .services { padding: 0; gap: 0; }
-      .services .sec-label, .services .sec-divider, .svc-title-row { display: none; }
-      .svc-cards { grid-template-columns: 1fr; }
-      .svc-card { border-left: none; border-right: none; border-top: none; }
+      .services { display: none; }
 
       /* Team */
       .team { padding: 56px 20px; gap: 40px; }
@@ -452,6 +456,10 @@
       <span class="lang-en">EN</span>
     </div>
     <a href="#contacto" class="btn-cta">AGENDAR CONSULTA</a>
+  </div>
+  <div class="lang-mob" aria-label="Idioma">
+    <i data-lucide="globe" style="width:13px;height:13px"></i>
+    <span>ES</span>
   </div>
   <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">
     <i data-lucide="menu" style="width:24px;height:24px"></i>
