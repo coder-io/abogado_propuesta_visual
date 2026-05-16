@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castañeda &amp; Asociados — Abogados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --v3-bg: #FFFFFF;
+      --v3-bg-soft: #F4F4F7;
+      --v3-ink: #060912;
+      --v3-gold: #C5961A;
+      --v3-gold-on-dark: #D4A835;
+      --v3-gray: #74788A;
+      --v3-gray-light: #E4E4EC;
+      --v3-surface: #0D1226;
+      --v3-text-on-dark: #E8E9F0;
+      --v3-text-muted-dark: #8890A4;
+      --v2-navy: #0C2340;
+      --v2-gold: #C69C3F;
+      --v2-bg: #F7F5F0;
+      --v2-bg-card: #FFFFFF;
+      --v2-border: #E8E4DC;
+      --v2-text: #1C2B3A;
+      --v2-navy-soft: #112030;
+      --text-cream: #FAF8F5;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--v3-bg); color: var(--v3-ink); }
+
+    /* ── HEADER ── */
+    .hdr {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 72px;
+      background: var(--v3-bg);
+      border-bottom: 1px solid var(--v3-gray-light);
+    }
+    .hdr-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .hdr-bar { width: 3px; height: 26px; background: var(--v3-gold); border-radius: 2px; }
+    .hdr-name { font-size: 18px; font-weight: 700; letter-spacing: 3px; color: var(--v3-ink); }
+    .hdr-nav { display: flex; align-items: center; gap: 32px; }
+    .hdr-nav a { text-decoration: none; font-size: 14px; color: var(--v3-gray); transition: color .2s; }
+    .hdr-nav a.active, .hdr-nav a:hover { color: var(--v3-ink); font-weight: 600; }
+    .hdr-right { display: flex; align-items: center; gap: 20px; }
+    .lang-toggle { display: flex; align-items: center; border: 1px solid var(--v3-gray-light); }
+    .lang-globe { padding: 6px 10px; display: flex; align-items: center; color: var(--v3-gray); }
+    .lang-es { background: var(--v3-ink); padding: 6px 14px; font-size: 11px; font-weight: 700; color: var(--v3-bg); }
+    .lang-en { padding: 6px 14px; font-size: 12px; font-weight: 500; color: var(--v3-gray); cursor: pointer; }
+    .btn-cta {
+      background: var(--v3-gold-on-dark); color: var(--v3-ink);
+      padding: 12px 28px; font-family: inherit; font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; border: none; cursor: pointer; text-decoration: none;
+      display: inline-block; transition: opacity .2s;
+    }
+    .btn-cta:hover { opacity: .88; }
+    .menu-btn {
+      display: none; background: none; border: none; cursor: pointer;
+      color: var(--v3-ink); padding: 4px;
+    }
+
+    /* ── MOBILE NAV ── */
+    .mob-nav {
+      display: none; position: fixed; inset: 0; top: 72px; z-index: 99;
+      background: var(--v3-ink); flex-direction: column; padding: 40px 24px; gap: 28px;
+    }
+    .mob-nav.open { display: flex; }
+    .mob-nav a {
+      font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600;
+      color: var(--v3-text-on-dark); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.06); padding-bottom: 16px;
+    }
+    .mob-nav .mob-cta {
+      margin-top: 8px; background: var(--v3-gold-on-dark); color: var(--v3-ink);
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; text-align: center; padding: 16px; border-bottom: none;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 640px;
+      background:
+        linear-gradient(rgba(13,18,38,.82), rgba(13,18,38,.82)),
+        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&q=80') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-inner {
+      display: flex; flex-direction: column; align-items: center; gap: 28px;
+      max-width: 820px; text-align: center; padding: 0 24px;
+    }
+    .badge { display: flex; align-items: center; gap: 12px; }
+    .badge-txt { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--v3-gold-on-dark); }
+    .badge-line { width: 40px; height: 2px; background: var(--v3-gold-on-dark); }
+    .hero-h1 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 64px; font-weight: 700;
+      color: #fff; line-height: 1;
+    }
+    .hero-div { width: 60px; height: 2px; background: var(--v3-gold-on-dark); }
+    .hero-sub { font-size: 18px; line-height: 1.7; color: var(--v3-text-muted-dark); }
+    .hero-ctas { display: flex; align-items: center; gap: 16px; padding-top: 8px; }
+    .btn-primary {
+      background: var(--v3-gold-on-dark); color: var(--v3-ink);
+      padding: 16px 36px; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+      text-decoration: none; transition: opacity .2s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { opacity: .88; }
+    .btn-ghost {
+      display: flex; align-items: center; gap: 8px;
+      padding: 16px 24px; color: #fff; font-size: 14px; font-weight: 500;
+      text-decoration: none; cursor: pointer;
+    }
+    .btn-ghost .arr { color: var(--v3-gold-on-dark); font-size: 18px; line-height: 1; }
+
+    /* ── STATS (mobile only) ── */
+    .stats { display: none; }
+
+    /* ── SECTION SHARED ── */
+    .sec-label { display: flex; align-items: center; gap: 16px; }
+    .sec-label-txt { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--v3-gold); }
+    .sec-label-line { width: 40px; height: 2px; background: var(--v3-gold); }
+    .sec-divider { height: 1px; background: var(--v3-gray-light); }
+
+    /* ── SERVICES ── */
+    .services { background: var(--v3-bg-soft); padding: 80px 120px; display: flex; flex-direction: column; gap: 56px; }
+    .svc-title-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+    .svc-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 700;
+      color: var(--v3-ink); line-height: 1; flex: 0 0 auto; max-width: 480px;
+    }
+    .svc-sub { font-size: 16px; line-height: 1.7; color: var(--v3-gray); max-width: 380px; }
+    .svc-cards { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .svc-card {
+      background: var(--v3-bg); border: 1px solid var(--v3-gray-light);
+      padding: 40px; display: flex; flex-direction: column; gap: 20px;
+    }
+    .svc-card.dark { background: var(--v3-surface); border-color: rgba(255,255,255,.08); }
+    .card-num { font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--v3-gold); }
+    .svc-card.dark .card-num { color: var(--v3-gold-on-dark); }
+    .card-acc { width: 40px; height: 2px; background: var(--v3-gold); }
+    .svc-card.dark .card-acc { background: var(--v3-gold-on-dark); }
+    .card-ttl { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--v3-ink); line-height: 1.15; }
+    .svc-card.dark .card-ttl { color: var(--v3-text-on-dark); }
+    .card-body-txt { font-size: 14px; line-height: 1.7; color: var(--v3-gray); }
+    .svc-card.dark .card-body-txt { color: var(--v3-text-muted-dark); }
+    .card-lnk {
+      display: flex; align-items: center; gap: 6px; padding-top: 8px;
+      text-decoration: none; color: var(--v3-ink); font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; transition: gap .2s; margin-top: auto;
+    }
+    .card-lnk:hover { gap: 10px; }
+    .svc-card.dark .card-lnk { color: var(--v3-gold-on-dark); }
+
+    /* ── TEAM ── */
+    .team { background: var(--v3-bg-soft); padding: 80px 120px; display: flex; flex-direction: column; gap: 56px; }
+    .team-title-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+    .team-title { font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 700; color: var(--v3-ink); line-height: 1; max-width: 480px; }
+    .team-sub { font-size: 16px; line-height: 1.7; color: var(--v3-gray); max-width: 400px; }
+    .team-cards { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .team-card { background: var(--v3-bg); border: 1px solid var(--v3-gray-light); display: flex; flex-direction: column; }
+    .team-card.dark { background: var(--v3-ink); border-color: rgba(255,255,255,.08); }
+    .team-photo {
+      height: 300px; background: var(--v3-surface);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .team-card.dark .team-photo { background: #1A2035; }
+    .team-acc { height: 3px; background: var(--v3-gold); }
+    .team-card.dark .team-acc { background: var(--v3-gold-on-dark); }
+    .team-body { padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 8px; }
+    .mbr-num { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--v3-gold); }
+    .team-card.dark .mbr-num { color: var(--v3-gold-on-dark); }
+    .mbr-name { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: var(--v3-ink); }
+    .team-card.dark .mbr-name { color: var(--v3-text-on-dark); }
+    .mbr-role { font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--v3-gray); }
+    .team-card.dark .mbr-role { color: var(--v3-text-muted-dark); }
+    .mbr-div { height: 1px; background: var(--v3-gray-light); }
+    .team-card.dark .mbr-div { background: rgba(255,255,255,.08); }
+    .mbr-area { font-size: 13px; color: var(--v3-gold); }
+    .team-card.dark .mbr-area { color: var(--v3-gold-on-dark); }
+    .mbr-bio { font-size: 13px; line-height: 1.6; color: var(--v3-gray); }
+    .team-card.dark .mbr-bio { color: var(--v3-text-muted-dark); }
+
+    /* ── BLOG ── */
+    .blog { background: var(--v3-bg); padding: 80px 120px; display: flex; flex-direction: column; gap: 48px; }
+    .blog-hdr { display: flex; justify-content: space-between; align-items: center; }
+    .view-all {
+      display: flex; align-items: center; gap: 8px; text-decoration: none;
+      color: var(--v3-ink); font-size: 12px; font-weight: 700; letter-spacing: 2px; transition: gap .2s;
+    }
+    .view-all:hover { gap: 12px; }
+    .blog-h2 { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; color: var(--v3-ink); line-height: 1.05; max-width: 700px; }
+    .blog-cards { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .blog-card { border: 1px solid var(--v3-gray-light); display: flex; flex-direction: column; }
+    .blog-img { height: 220px; overflow: hidden; }
+    .blog-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .blog-body { padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .blog-meta { display: flex; align-items: center; gap: 16px; }
+    .blog-cat { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--v3-gold); }
+    .blog-date { font-size: 11px; color: var(--v3-gray); }
+    .blog-ttl { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--v3-ink); line-height: 1.2; }
+    .blog-exc { font-size: 13px; line-height: 1.6; color: var(--v3-gray); }
+    .blog-lnk {
+      display: flex; align-items: center; gap: 6px; padding-top: 4px;
+      text-decoration: none; color: var(--v3-ink); font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; margin-top: auto; transition: gap .2s;
+    }
+    .blog-lnk:hover { gap: 10px; }
+
+    /* ── CONTACT ── */
+    .contact { display: flex; }
+    .ct-left {
+      width: 560px; flex-shrink: 0; background: var(--v3-surface);
+      padding: 80px 64px; display: flex; flex-direction: column; gap: 40px;
+    }
+    .ct-right {
+      flex: 1; background: var(--v3-bg-soft);
+      padding: 80px 64px; display: flex; flex-direction: column; gap: 24px;
+    }
+    .ct-lbl { display: flex; align-items: center; gap: 16px; }
+    .ct-lbl-txt { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--v3-gold-on-dark); }
+    .ct-lbl-line { width: 40px; height: 2px; background: var(--v3-gold-on-dark); }
+    .ct-h2 { font-family: 'Space Grotesk', sans-serif; font-size: 72px; font-weight: 700; color: var(--v3-text-on-dark); line-height: .95; }
+    .ct-sub { font-size: 16px; line-height: 1.6; color: var(--v3-text-muted-dark); max-width: 400px; }
+    .ct-divider { height: 1px; background: rgba(255,255,255,.08); }
+    .ct-info { display: flex; align-items: center; gap: 16px; }
+    .ct-info-txt { font-size: 14px; color: var(--v3-text-muted-dark); }
+    .form-ttl { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: var(--v3-ink); }
+    .form-div { height: 1px; background: var(--v3-gray-light); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--v3-gray); }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: var(--v3-bg); border: 1px solid var(--v3-gray-light); border-radius: 0;
+      padding: 0 16px; height: 48px; font-family: inherit; font-size: 14px; color: var(--v3-ink);
+      width: 100%; outline: none; -webkit-appearance: none; appearance: none; transition: border-color .2s;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--v3-gold); }
+    .form-field textarea { height: 120px; padding: 14px 16px; resize: none; }
+    .form-field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2374788A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer;
+    }
+    .btn-submit {
+      display: inline-flex; align-items: center; gap: 10px; align-self: flex-start;
+      background: var(--v3-ink); color: var(--v3-bg);
+      padding: 16px 40px; border: none; cursor: pointer;
+      font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: 2px; transition: opacity .2s;
+    }
+    .btn-submit:hover { opacity: .82; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--v3-ink); }
+    .ft-top { display: flex; gap: 48px; padding: 64px 120px; justify-content: space-between; }
+    .ft-brand { width: 340px; display: flex; flex-direction: column; gap: 20px; }
+    .ft-logo-row { display: flex; align-items: center; gap: 12px; }
+    .ft-logo-box { width: 36px; height: 36px; background: var(--v3-gold-on-dark); display: flex; align-items: center; justify-content: center; }
+    .ft-logo-v { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--v3-ink); }
+    .ft-logo-name { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #fff; }
+    .ft-desc { font-size: 14px; line-height: 1.6; color: var(--v3-text-muted-dark); max-width: 300px; }
+    .ft-social { display: flex; gap: 10px; }
+    .ft-sc-btn {
+      width: 32px; height: 32px; background: rgba(255,255,255,.06);
+      display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s;
+    }
+    .ft-sc-btn:hover { background: rgba(255,255,255,.12); }
+    .ft-cols { display: flex; gap: 48px; }
+    .ft-col { display: flex; flex-direction: column; gap: 14px; }
+    .ft-col-hdr { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: var(--v3-gold-on-dark); }
+    .ft-col-div { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 2px; }
+    .ft-col a, .ft-col span { font-size: 13px; color: var(--v3-text-muted-dark); text-decoration: none; transition: color .2s; line-height: 1.4; }
+    .ft-col a:hover { color: #fff; }
+    .ft-sep { height: 1px; background: rgba(255,255,255,.06); }
+    .ft-bar { display: flex; justify-content: space-between; align-items: center; padding: 20px 120px; }
+    .ft-copy { font-size: 11px; color: rgba(255,255,255,.2); }
+    .ft-legal { display: flex; gap: 24px; }
+    .ft-legal a { font-size: 11px; color: rgba(255,255,255,.2); text-decoration: none; transition: color .2s; }
+    .ft-legal a:hover { color: rgba(255,255,255,.5); }
+    .ft-lang { display: flex; align-items: center; gap: 4px; font-size: 11px; }
+    .ft-lang .es { color: var(--v3-gold-on-dark); font-weight: 700; }
+    .ft-lang .sep { color: rgba(255,255,255,.2); }
+    .ft-lang .en { color: rgba(255,255,255,.25); }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--v2-bg); padding: 80px 120px; display: flex; flex-direction: column; gap: 48px; }
+    .pricing-hdr { display: flex; flex-direction: column; gap: 12px; }
+    .pricing-label { display: flex; align-items: center; gap: 8px; }
+    .pricing-label-txt { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--v2-gold); }
+    .pricing-label-line { width: 28px; height: 1.5px; background: var(--v2-gold); }
+    .pricing-title { font-size: 36px; font-weight: 700; color: var(--v2-navy); line-height: 1.1; }
+    .pricing-sub { font-size: 14px; color: var(--v3-gray); }
+    .pricing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pricing-card { background: var(--v2-bg-card); border-radius: 4px; border: 1px solid var(--v2-border); display: flex; flex-direction: column; overflow: hidden; }
+    .pricing-card-hdr { background: var(--v2-navy); padding: 16px; display: flex; align-items: center; gap: 8px; color: var(--text-cream); font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
+    .pricing-row { padding: 11px 16px; display: flex; justify-content: space-between; align-items: center; }
+    .pricing-row span:first-child { font-size: 13px; color: var(--v2-text); }
+    .pricing-row .price { font-size: 11px; font-weight: 700; color: var(--v2-gold); }
+    .pricing-sep { height: 1px; background: var(--v2-border); }
+    .pricing-btn { display: block; text-align: center; background: var(--v2-gold); color: var(--v2-navy); padding: 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-decoration: none; margin-top: auto; }
+    .pricing-btn:hover { opacity: .88; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--v2-navy); padding: 48px 120px; display: flex; flex-direction: column; gap: 24px; }
+    .test-row1 { display: flex; justify-content: space-between; align-items: center; }
+    .test-label { display: flex; align-items: center; gap: 8px; }
+    .test-label-txt { font-size: 10px; letter-spacing: 2px; color: var(--v2-gold); }
+    .test-label-line { width: 28px; height: 1.5px; background: var(--v2-gold); }
+    .test-dots { display: flex; align-items: center; gap: 8px; }
+    .test-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.19); }
+    .test-dot.active { width: 10px; height: 10px; background: var(--v2-gold); }
+    .test-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .test-card { background: var(--v2-navy-soft); border-radius: 4px; border: 1px solid rgba(255,255,255,.06); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .test-stars { display: flex; gap: 3px; }
+    .test-quote { font-size: 14px; line-height: 1.6; color: var(--text-cream); font-style: italic; }
+    .test-sep { height: 1px; background: rgba(255,255,255,.08); }
+    .test-client-name { font-size: 13px; font-weight: 700; color: var(--text-cream); }
+    .test-client-role { font-size: 11px; color: rgba(255,255,255,.45); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hdr { padding: 0 32px; }
+      .services, .team, .blog { padding: 72px 48px; }
+      .ft-top { padding: 48px; }
+      .ft-bar { padding: 20px 48px; }
+    }
+
+    @media (max-width: 768px) {
+      /* Header */
+      .hdr { padding: 0 20px; height: 60px; }
+      .hdr-nav, .hdr-right { display: none; }
+      .menu-btn { display: flex; }
+      .hdr-name { font-size: 10px; letter-spacing: 1.2px; }
+      .hdr-bar { height: 20px; }
+      .mob-nav { top: 60px; }
+
+      /* Hero */
+      .hero {
+        height: auto;
+        background: linear-gradient(180deg, #0C2340 0%, #061428 100%);
+        align-items: flex-start;
+      }
+      .hero-inner { align-items: flex-start; text-align: left; padding: 40px 20px 48px; gap: 20px; max-width: 100%; }
+      .badge-txt { font-size: 9px; letter-spacing: 2px; }
+      .hero-h1 { font-family: 'Inter', sans-serif; font-size: 34px; line-height: 1.15; }
+      .hero-div { display: none; }
+      .hero-sub { font-size: 14px; color: rgba(255,255,255,.44); }
+      .hero-ctas { flex-direction: column; width: 100%; gap: 12px; }
+      .btn-primary {
+        width: 100%; justify-content: center; border-radius: 3px; padding: 15px 20px; font-size: 13px;
+      }
+      .btn-ghost {
+        width: 100%; justify-content: center; border-radius: 3px;
+        border: 1px solid rgba(255,255,255,.2); font-size: 13px; font-weight: 600;
+        color: var(--text-cream);
+      }
+      .btn-ghost .arr { display: none; }
+
+      /* Stats */
+      .stats {
+        display: flex; flex-direction: column; gap: 16px;
+        padding: 24px 20px; background: var(--v2-navy);
+      }
+      .stats-lbl-row { display: flex; align-items: center; gap: 8px; }
+      .stats-dash { width: 16px; height: 2px; background: var(--v2-gold); }
+      .stats-lbl { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--v2-gold); }
+      .stats-ttl { font-size: 24px; font-weight: 700; color: var(--text-cream); line-height: 1.2; }
+      .stats-bar { display: flex; background: var(--v2-navy); border-radius: 4px; }
+      .stats-bar-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 16px 12px; }
+      .stats-bar-item + .stats-bar-item { border-left: 1px solid rgba(255,255,255,.15); }
+      .stats-bar-n { font-size: 26px; font-weight: 800; color: var(--v2-gold); }
+      .stats-bar-d { font-size: 10px; color: var(--text-cream); text-align: center; line-height: 1.3; }
+      .stat-card { background: #fff; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+      .stat-icon { color: var(--v2-navy); }
+      .stat-acc { height: 2px; background: var(--v2-gold); }
+      .stat-n { font-size: 22px; font-weight: 700; color: var(--v2-navy); }
+      .stat-d { font-size: 12px; color: #555; line-height: 1.5; }
+      .stat-lnk { font-size: 12px; font-weight: 600; color: var(--v2-gold); text-decoration: none; }
+
+      /* Services */
+      .services { padding: 0; gap: 0; }
+      .services .sec-label, .services .sec-divider, .svc-title-row { display: none; }
+      .svc-cards { grid-template-columns: 1fr; }
+      .svc-card { border-left: none; border-right: none; border-top: none; }
+
+      /* Team */
+      .team { padding: 56px 20px; gap: 40px; }
+      .team-title-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .team-title { font-size: 32px; }
+      .team-sub { font-size: 14px; }
+      .team-cards { grid-template-columns: 1fr; }
+      .team-photo { height: 220px; }
+      .mbr-name { font-size: 20px; }
+
+      /* Blog */
+      .blog { padding: 40px 20px; gap: 20px; }
+      .blog-hdr { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .blog-h2 { font-size: 22px; font-family: 'Inter', sans-serif; }
+      .blog-cards { grid-template-columns: 1fr; gap: 20px; }
+      .blog-card { border-radius: 8px; border-color: var(--v2-border); }
+      .blog-img { height: 200px; }
+      .blog-ttl { font-size: 15px; font-family: 'Inter', sans-serif; }
+
+      /* Contact */
+      .contact { flex-direction: column; }
+      .ct-left { width: 100%; padding: 36px 20px 32px; gap: 20px; }
+      .ct-right { padding: 28px 20px 36px; gap: 16px; }
+      .ct-h2 { font-size: 48px; font-family: 'Inter', sans-serif; }
+      .form-row { grid-template-columns: 1fr; }
+      .btn-submit { width: 100%; justify-content: center; }
+
+      /* Pricing */
+      .pricing { padding: 40px 20px; gap: 24px; }
+      .pricing-title { font-size: 22px; font-family: 'Inter', sans-serif; }
+      .pricing-cards { grid-template-columns: 1fr; }
+
+      /* Testimonials */
+      .testimonials { padding: 40px 20px; }
+      .test-cards { grid-template-columns: 1fr; }
+
+      /* Footer */
+      .ft-top { flex-direction: column; padding: 32px 20px 24px; gap: 32px; }
+      .ft-brand { width: 100%; }
+      .ft-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+      .ft-bar { padding: 16px 20px; flex-wrap: wrap; gap: 8px; }
+      .ft-lang { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <a class="hdr-logo" href="#inicio">
+    <div class="hdr-bar"></div>
+    <span class="hdr-name">CASTAÑEDA &amp; ASOCIADOS</span>
+  </a>
+  <nav class="hdr-nav">
+    <a href="#inicio" class="active">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#areas">Áreas de Práctica</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#blog">Blog</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <div class="hdr-right">
+    <div class="lang-toggle">
+      <span class="lang-globe"><i data-lucide="globe" style="width:14px;height:14px"></i></span>
+      <span class="lang-es">ES</span>
+      <span class="lang-en">EN</span>
+    </div>
+    <a href="#contacto" class="btn-cta">AGENDAR CONSULTA</a>
+  </div>
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">
+    <i data-lucide="menu" style="width:24px;height:24px"></i>
+  </button>
+</header>
+
+<nav class="mob-nav" id="mobNav">
+  <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+  <a href="#nosotros" onclick="toggleMenu()">Nosotros</a>
+  <a href="#areas" onclick="toggleMenu()">Áreas de Práctica</a>
+  <a href="#equipo" onclick="toggleMenu()">Equipo</a>
+  <a href="#blog" onclick="toggleMenu()">Blog</a>
+  <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+  <a href="#contacto" class="mob-cta" onclick="toggleMenu()">AGENDAR CONSULTA</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="badge">
+      <span class="badge-txt">EXPERIENCIA COMPROBADA</span>
+      <div class="badge-line"></div>
+    </div>
+    <h1 class="hero-h1">Asesoría jurídica con<br>trayectoria y compromiso</h1>
+    <div class="hero-div"></div>
+    <p class="hero-sub">Servicios legales especializados para clientes<br>nacionales e internacionales</p>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn-primary">AGENDAR CONSULTA</a>
+      <a href="#areas" class="btn-ghost">Conocer áreas de práctica <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS (mobile only) -->
+<section class="stats">
+  <div class="stats-lbl-row">
+    <div class="stats-dash"></div>
+    <span class="stats-lbl">ÁREAS DE PRÁCTICA</span>
+  </div>
+  <p class="stats-ttl">Práctica jurídica especializada</p>
+  <div class="stats-bar">
+    <div class="stats-bar-item">
+      <span class="stats-bar-n">25+</span>
+      <span class="stats-bar-d">Años de experiencia</span>
+    </div>
+    <div class="stats-bar-item">
+      <span class="stats-bar-n">500+</span>
+      <span class="stats-bar-d">Casos resueltos</span>
+    </div>
+    <div class="stats-bar-item">
+      <span class="stats-bar-n">10+</span>
+      <span class="stats-bar-d">Personal especializado</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i data-lucide="briefcase" style="width:24px;height:24px"></i></div>
+    <div class="stat-acc"></div>
+    <div class="stat-n">Derecho Corporativo</div>
+    <div class="stat-d">Constitución de empresas, fusiones y adquisiciones, due diligence y contratos corporativos de alto nivel.</div>
+    <a class="stat-lnk" href="#areas">Conocer más →</a>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i data-lucide="trending-up" style="width:24px;height:24px"></i></div>
+    <div class="stat-acc"></div>
+    <div class="stat-n">Derecho Mercantil</div>
+    <div class="stat-d">Contratos comerciales, cobranza judicial, concurso mercantil y protección de marcas y franquicias a nivel nacional.</div>
+    <a class="stat-lnk" href="#areas">Conocer más →</a>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i data-lucide="scale" style="width:24px;height:24px"></i></div>
+    <div class="stat-acc"></div>
+    <div class="stat-n">Litigio y Arbitraje</div>
+    <div class="stat-d">Defensa en litigios civiles y mercantiles, arbitraje comercial, mediación y amparo judicial.</div>
+    <a class="stat-lnk" href="#areas">Conocer más →</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="areas">
+  <div class="sec-label">
+    <span class="sec-label-txt">ÁREAS DE PRÁCTICA</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <div class="sec-divider"></div>
+  <div class="svc-title-row">
+    <h2 class="svc-title">Práctica jurídica<br>especializada</h2>
+    <p class="svc-sub">Brindamos asesoría integral en las principales ramas del derecho, con equipos dedicados y experiencia acreditada en casos nacionales e internacionales.</p>
+  </div>
+  <div class="svc-cards">
+    <div class="svc-card">
+      <span class="card-num">01</span>
+      <div class="card-acc"></div>
+      <h3 class="card-ttl">Derecho<br>Corporativo</h3>
+      <p class="card-body-txt">Constitución de sociedades, M&amp;A, gobierno corporativo, cumplimiento normativo y estructuras jurídicas para empresas nacionales e internacionales.</p>
+      <a href="#contacto" class="card-lnk">CONSULTAR ÁREA <i data-lucide="arrow-right" style="width:12px;height:12px"></i></a>
+    </div>
+    <div class="svc-card dark">
+      <span class="card-num">02</span>
+      <div class="card-acc"></div>
+      <h3 class="card-ttl">Derecho<br>Mercantil</h3>
+      <p class="card-body-txt">Especialistas en contratos comerciales, cobranza judicial, concurso mercantil y protección de marcas y franquicias a nivel nacional e internacional.</p>
+      <a href="#contacto" class="card-lnk">CONSULTAR ÁREA <i data-lucide="arrow-right" style="width:12px;height:12px"></i></a>
+    </div>
+    <div class="svc-card">
+      <span class="card-num">03</span>
+      <div class="card-acc"></div>
+      <h3 class="card-ttl">Litigios y<br>Arbitraje</h3>
+      <p class="card-body-txt">Representación estratégica en disputas comerciales, arbitraje internacional y litigios ante tribunales federales y locales de alto impacto.</p>
+      <a href="#contacto" class="card-lnk">CONSULTAR ÁREA <i data-lucide="arrow-right" style="width:12px;height:12px"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="equipo">
+  <div class="sec-label">
+    <span class="sec-label-txt">EQUIPO</span>
+    <div class="sec-label-line"></div>
+  </div>
+  <div class="team-title-row">
+    <h2 class="team-title">Los mejores<br>profesionales</h2>
+    <p class="team-sub">Un equipo de abogados de alto rendimiento, formados en las mejores instituciones nacionales e internacionales.</p>
+  </div>
+  <div class="team-cards">
+    <div class="team-card">
+      <div class="team-photo">
+        <i data-lucide="user" style="width:64px;height:64px;color:rgba(255,255,255,.18)"></i>
+      </div>
+      <div class="team-acc"></div>
+      <div class="team-body">
+        <span class="mbr-num">01</span>
+        <h3 class="mbr-name">Lic. Eduardo Castañeda</h3>
+        <span class="mbr-role">SOCIO FUNDADOR</span>
+        <div class="mbr-div"></div>
+        <span class="mbr-area">Derecho Corporativo</span>
+        <p class="mbr-bio">Más de 15 años asesorando en fusiones, adquisiciones y gobierno corporativo.</p>
+      </div>
+    </div>
+    <div class="team-card dark">
+      <div class="team-photo">
+        <i data-lucide="user" style="width:64px;height:64px;color:rgba(255,255,255,.08)"></i>
+      </div>
+      <div class="team-acc"></div>
+      <div class="team-body">
+        <span class="mbr-num">02</span>
+        <h3 class="mbr-name">Lic. Roberto Montoya</h3>
+        <span class="mbr-role">SOCIO</span>
+        <div class="mbr-div"></div>
+        <span class="mbr-area">Derecho Mercantil</span>
+        <p class="mbr-bio">Especialista en contratos comerciales y regulación con presencia en México y América Latina.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo">
+        <i data-lucide="user" style="width:64px;height:64px;color:rgba(255,255,255,.18)"></i>
+      </div>
+      <div class="team-acc"></div>
+      <div class="team-body">
+        <span class="mbr-num">03</span>
+        <h3 class="mbr-name">Lic. Ana Sofía Reyes</h3>
+        <span class="mbr-role">ASOCIADA SENIOR</span>
+        <div class="mbr-div"></div>
+        <span class="mbr-area">Litigios y Arbitraje</span>
+        <p class="mbr-bio">Destacada litigante con experiencia en arbitraje ante CANACO e instituciones internacionales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="honorarios">
+  <div class="pricing-hdr">
+    <div class="pricing-label">
+      <span class="pricing-label-txt">SERVICIOS</span>
+      <div class="pricing-label-line"></div>
+    </div>
+    <h2 class="pricing-title">Nuestros servicios y honorarios estimados</h2>
+    <p class="pricing-sub">Los precios son estimados y varían según la complejidad de cada caso. Primera consulta gratuita.</p>
+  </div>
+  <div class="pricing-cards">
+    <div class="pricing-card">
+      <div class="pricing-card-hdr">
+        <i data-lucide="briefcase" style="width:16px;height:16px;color:var(--v2-gold)"></i>
+        DERECHO CORPORATIVO
+      </div>
+      <div class="pricing-row"><span>Constitución de empresa</span><span class="price">$9,000–$24,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Fusiones y adquisiciones</span><span class="price">desde $85,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Due diligence</span><span class="price">$28,000–$90,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Contratos corporativos</span><span class="price">$6,000–$28,000</span></div>
+      <div class="pricing-sep"></div>
+      <a href="#contacto" class="pricing-btn">Consultar →</a>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-hdr">
+        <i data-lucide="trending-up" style="width:16px;height:16px;color:var(--v2-gold)"></i>
+        DERECHO MERCANTIL
+      </div>
+      <div class="pricing-row"><span>Contratos comerciales</span><span class="price">$5,500–$20,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Cobranza judicial</span><span class="price">$12,000–$40,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Concurso mercantil</span><span class="price">desde $55,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Marcas y franquicias</span><span class="price">$8,000–$28,000</span></div>
+      <div class="pricing-sep"></div>
+      <a href="#contacto" class="pricing-btn">Consultar →</a>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-hdr">
+        <i data-lucide="scale" style="width:16px;height:16px;color:var(--v2-gold)"></i>
+        LITIGIO Y ARBITRAJE
+      </div>
+      <div class="pricing-row"><span>Litigio civil y mercantil</span><span class="price">$28,000–$90,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Arbitraje comercial</span><span class="price">$40,000–$130,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Mediación y conciliación</span><span class="price">$9,000–$30,000</span></div>
+      <div class="pricing-sep"></div>
+      <div class="pricing-row"><span>Amparo judicial</span><span class="price">$16,000–$55,000</span></div>
+      <div class="pricing-sep"></div>
+      <a href="#contacto" class="pricing-btn">Consultar →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="test-row1">
+    <div class="test-label">
+      <span class="test-label-txt">TESTIMONIOS</span>
+      <div class="test-label-line"></div>
+    </div>
+    <div class="test-dots">
+      <div class="test-dot active"></div>
+      <div class="test-dot"></div>
+      <div class="test-dot"></div>
+    </div>
+  </div>
+  <div class="test-cards">
+    <div class="test-card">
+      <div class="test-stars">
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+      </div>
+      <p class="test-quote">« Castañeda &amp; Asociados transformó por completo nuestra estrategia fiscal. Ahorro significativo y certeza jurídica total. »</p>
+      <div class="test-sep"></div>
+      <div>
+        <p class="test-client-name">Carlos Mendoza</p>
+        <p class="test-client-role">Director General, Grupo Industrial Mendoza</p>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+      </div>
+      <p class="test-quote">« El equipo resolvió un conflicto societario complejo con una rapidez y profesionalismo que no había visto antes. »</p>
+      <div class="test-sep"></div>
+      <div>
+        <p class="test-client-name">Ana Patricia Romero</p>
+        <p class="test-client-role">Fundadora, TechMexico SA de CV</p>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+        <i data-lucide="star" style="width:12px;height:12px;fill:var(--v2-gold);color:var(--v2-gold)"></i>
+      </div>
+      <p class="test-quote">« La asesoría en nuestra fusión fue impecable. Sin duda el mejor despacho con el que hemos trabajado. »</p>
+      <div class="test-sep"></div>
+      <div>
+        <p class="test-client-name">Roberto Sánchez</p>
+        <p class="test-client-role">CFO, Importadora Sánchez SA de CV</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="blog-hdr">
+    <div class="sec-label">
+      <span class="sec-label-txt">PUBLICACIONES</span>
+      <div class="sec-label-line"></div>
+    </div>
+    <a href="#blog" class="view-all">VER TODAS <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+  </div>
+  <div class="sec-divider"></div>
+  <h2 class="blog-h2">Análisis y perspectivas jurídicas</h2>
+  <div class="blog-cards">
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="https://images.unsplash.com/photo-1762427354051-a9bdb181ae3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=800" alt="Reformas fiscales" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-cat">DERECHO CORPORATIVO</span>
+          <span class="blog-date">15 ABR 2026</span>
+        </div>
+        <h3 class="blog-ttl">Reformas fiscales 2026: nuevas obligaciones para empresas extranjeras</h3>
+        <p class="blog-exc">Análisis de los cambios regulatorios y su impacto en la inversión extranjera directa en México.</p>
+        <a href="#blog" class="blog-lnk">LEER MÁS <i data-lucide="arrow-right" style="width:12px;height:12px"></i></a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="https://images.unsplash.com/photo-1560264401-b76ed96f3134?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=800" alt="NOM-037 teletrabajo" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-cat">DERECHO LABORAL</span>
+          <span class="blog-date">2 MAR 2026</span>
+        </div>
+        <h3 class="blog-ttl">NOM-037 y teletrabajo: cumplimiento y responsabilidades patronales</h3>
+        <p class="blog-exc">Guía práctica para la implementación de las obligaciones legales en materia de trabajo a distancia.</p>
+        <a href="#blog" class="blog-lnk">LEER MÁS <i data-lucide="arrow-right" style="width:12px;height:12px"></i></a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img">
+        <img src="https://images.unsplash.com/photo-1777104781936-f7bfe64522da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixlib=rb-4.1.0&q=80&w=800" alt="Contratos internacionales" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-cat">DERECHO MERCANTIL</span>
+          <span class="blog-date">18 FEB 2026</span>
+        </div>
+        <h3 class="blog-ttl">Contratos internacionales: protección jurídica ante riesgos transfronterizos</h3>
+        <p class="blog-exc">Los elementos clave que todo contrato internacional debe contemplar para proteger la inversión.</p>
+        <a href="#blog" class="blog-lnk">LEER MÁS <i data-lucide="arrow-right" style="width:12px;height:12px"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="ct-left">
+    <div class="ct-lbl">
+      <span class="ct-lbl-txt">CONTACTO</span>
+      <div class="ct-lbl-line"></div>
+    </div>
+    <h2 class="ct-h2">Hablemos.</h2>
+    <p class="ct-sub">Consulta inicial sin compromiso. Confíe su caso a un equipo de primer nivel.</p>
+    <div class="ct-divider"></div>
+    <div class="ct-info">
+      <i data-lucide="map-pin" style="width:16px;height:16px;color:var(--v3-gold-on-dark);flex-shrink:0"></i>
+      <span class="ct-info-txt">Paseo de la Reforma 505, Piso 32 — CDMX</span>
+    </div>
+    <div class="ct-info">
+      <i data-lucide="phone" style="width:16px;height:16px;color:var(--v3-gold-on-dark);flex-shrink:0"></i>
+      <span class="ct-info-txt">+52 (55) 5555 1234</span>
+    </div>
+    <div class="ct-info">
+      <i data-lucide="mail" style="width:16px;height:16px;color:var(--v3-gold-on-dark);flex-shrink:0"></i>
+      <span class="ct-info-txt">contacto@castaneda-asociados.mx</span>
+    </div>
+  </div>
+  <div class="ct-right">
+    <h3 class="form-ttl">Envíenos un mensaje</h3>
+    <div class="form-div"></div>
+    <form onsubmit="handleForm(event)">
+      <div class="form-row" style="margin-bottom:20px">
+        <div class="form-field">
+          <label for="nombre">NOMBRE</label>
+          <input id="nombre" type="text" placeholder="Su nombre completo" required>
+        </div>
+        <div class="form-field">
+          <label for="correo">CORREO</label>
+          <input id="correo" type="email" placeholder="correo@ejemplo.com" required>
+        </div>
+      </div>
+      <div class="form-row" style="margin-bottom:20px">
+        <div class="form-field">
+          <label for="telefono">TELÉFONO</label>
+          <input id="telefono" type="tel" placeholder="+52 (55) ···">
+        </div>
+        <div class="form-field">
+          <label for="area">ÁREA DE INTERÉS</label>
+          <select id="area">
+            <option value="">Seleccionar</option>
+            <option>Derecho Corporativo</option>
+            <option>Derecho Laboral</option>
+            <option>Litigios y Arbitraje</option>
+            <option>Derecho Mercantil</option>
+            <option>Derecho Civil</option>
+            <option>Derecho Familiar</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field" style="margin-bottom:24px">
+        <label for="mensaje">MENSAJE</label>
+        <textarea id="mensaje" placeholder="Describa su consulta..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">
+        ENVIAR MENSAJE
+        <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <div class="ft-logo-row">
+        <div class="ft-logo-box"><span class="ft-logo-v">V</span></div>
+        <span class="ft-logo-name">CASTAÑEDA &amp; ASOCIADOS</span>
+      </div>
+      <p class="ft-desc">Excelencia jurídica al servicio de empresas y personas.</p>
+      <div class="ft-social">
+        <div class="ft-sc-btn" aria-label="LinkedIn">
+          <i data-lucide="linkedin" style="width:14px;height:14px;color:rgba(255,255,255,.65)"></i>
+        </div>
+        <div class="ft-sc-btn" aria-label="Twitter / X">
+          <i data-lucide="twitter" style="width:14px;height:14px;color:rgba(255,255,255,.65)"></i>
+        </div>
+        <div class="ft-sc-btn" aria-label="Instagram">
+          <i data-lucide="instagram" style="width:14px;height:14px;color:rgba(255,255,255,.65)"></i>
+        </div>
+      </div>
+    </div>
+    <div class="ft-cols">
+      <div class="ft-col">
+        <span class="ft-col-hdr">NAVEGACIÓN</span>
+        <div class="ft-col-div"></div>
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#areas">Áreas de Práctica</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#blog">Blog</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="ft-col">
+        <span class="ft-col-hdr">ÁREAS</span>
+        <div class="ft-col-div"></div>
+        <span>Derecho Civil</span>
+        <span>Derecho Mercantil</span>
+        <span>Derecho Corporativo</span>
+        <span>Derecho Laboral</span>
+        <span>Derecho Familiar</span>
+        <span>Litigios y Arbitraje</span>
+      </div>
+      <div class="ft-col">
+        <span class="ft-col-hdr">CONTACTO</span>
+        <div class="ft-col-div"></div>
+        <span>+52 (55) 5555 1234</span>
+        <span>contacto@castaneda-asociados.mx</span>
+        <span>Paseo de la Reforma 505<br>Piso 32, CDMX</span>
+      </div>
+    </div>
+  </div>
+  <div class="ft-sep"></div>
+  <div class="ft-bar">
+    <span class="ft-copy">© 2026 Castañeda &amp; Asociados — Todos los derechos reservados.</span>
+    <div class="ft-legal">
+      <a href="#">Aviso de Privacidad</a>
+      <a href="#">Términos</a>
+    </div>
+    <div class="ft-lang">
+      <span class="es">ES</span>
+      <span class="sep"> · </span>
+      <span class="en">EN</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  function toggleMenu() {
+    const nav = document.getElementById('mobNav');
+    nav.classList.toggle('open');
+  }
+
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = 'MENSAJE ENVIADO ✓';
+    btn.style.background = 'var(--v3-gold)';
+    setTimeout(() => {
+      btn.innerHTML = 'ENVIAR MENSAJE <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  // Close mobile nav on outside click
+  document.addEventListener('click', function(e) {
+    const nav = document.getElementById('mobNav');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !e.target.closest('.menu-btn')) {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
